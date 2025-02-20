@@ -1,0 +1,12 @@
+services:
+  database:
+    container_name: service
+    hostname: service
+    build: .
+    restart: always
+    ports:
+      - 44040:44040
+    command: [
+      "/app/service",
+      "--config=local.yaml"
+    ]

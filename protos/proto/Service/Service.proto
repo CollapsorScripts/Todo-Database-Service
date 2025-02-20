@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package service;
+
+option go_package = "collapse.Service;Service";
+
+/*
+  Доступные API методы
+*/
+service Service {
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse); //Создание задачи
+  rpc GetTasks(Empty) returns (GetTasksResponse); //Список всех задач
+  rpc GetTask(GetTaskRequest) returns (GetTaskResponse); //Получить определенную задачу по ID
+  rpc UpdateTask(UpdateTaskRequest) returns (UpdateTaskResponse); //Обновление задачи
+  rpc DeleteTask(DeleteTaskRequest) returns (DeleteTaskResponse); //Удаление задачи по ID
+}
+
+/*
+ Пустая структура, необходимая для запросов без входящих аргументов
+*/
+message Empty {}
+
+/*
+ Структура задач
+*/
+message Task {
+  int64 id = 1; //ID задачи
+  string title = 2; //Название задачи
+  string description = 3; //Описание задачи
+  string status = 4; //Статус задачи
+  string createdAt = 5; /** Дата создания сущности в базе данных */
+  string updatedAt = 6; /** Дата последнего обновления сущности в базе данных */
+}
+
+/*
+ Запрос на создание задача
+*/
+message CreateTaskRequest {
+  string title = 1; //Название задачи
+  string description = 2; //Описание задачи
+}
+
+/*
+ Ответ на запрос создания задачи
+*/
+message CreateTaskResponse {
+  int64 id = 1; //ID задачи
+  string title = 2; //Название задачи
+  string description = 3; //Описание задачи
+  string status = 4; //Статус задачи
+  string createdAt = 5; /** Дата создания сущности в базе данных */
+  string updatedAt = 6; /** Дата последнего обновления сущности в базе данных */
+}
+
+/*
+ Возвращает массив с списком всех задач
+*/
+message GetTasksResponse {
+  repeated Task tasks = 1; //Массив задач
+}
+
+/*
+ Запрос на извлечение задачи
+*/
+message GetTaskRequest {
+  int64 id = 1; //ID задачи которую хотим получить
+}
+
+/*
+ Ответ на запрос поиска задачи по ID
+*/
+message GetTaskResponse {
+  int64 id = 1; //ID задачи
+  string title = 2; //Название задачи
+  string description = 3; //Описание задачи
+  string status = 4; //Статус задачи
+  string createdAt = 5; // Дата создания сущности в базе данных
+  string updatedAt = 6; // Дата последнего обновления сущности в базе данных
+}
+
+/*
+ Запрос на обновление задачи
+*/
+message UpdateTaskRequest {
+  int64 id = 1; //ID задачи
+  string title = 2; //Название задачи
+  string description = 3; //Описание задачи
+  string status = 4; //Статус задачи
+}
+
+/*
+ Ответ на запрос обновлени задачи
+*/
+message UpdateTaskResponse {
+  int64 id = 1; //ID задачи
+  string title = 2; //Название задачи
+  string description = 3; //Описание задачи
+  string status = 4; //Статус задачи
+  string createdAt = 5; // Дата создания сущности в базе данных
+  string updatedAt = 6; // Дата последнего обновления сущности в базе данных
+}
+
+/*
+ Запрос на удаление задачи
+*/
+message DeleteTaskRequest {
+  int64 id = 1; //ID задачи которую хотим удалить
+}
+
+/*
+ Ответ на запрос удаления задачи
+*/
+message DeleteTaskResponse {
+  bool success = 1; //Успешно ли удалена запись
+}

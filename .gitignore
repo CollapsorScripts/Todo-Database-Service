@@ -1,0 +1,5 @@
+.idea
+files
+config/local.yaml
+protos/gen/go/*
+databaseService

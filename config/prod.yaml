@@ -1,0 +1,15 @@
+env: "prod"
+grpc:
+  port: 44040 #GRPC порт-прослушивания
+  timeout: 5s
+database: #Конфигурация базы данных
+  host: "localhost" #Хост
+  user: "postgres" #Пользователь БД
+  password: "postgres" #Пароль БД
+  name: "todo" #Имя базы данных
+  port: 5432 #Порт базы данных
+  migrations: true #Применять миграции при запуске
+paths:
+  files: "./files"
+  logDir: "./log"
+  logName: "databaseService.log"
