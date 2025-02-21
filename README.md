@@ -20,14 +20,14 @@
 
 ## Запуск
 Присутствует запуск с аргументами: ```databaseService --config=./config/prod.yaml```
-# Make
+## Make
 В корне проекта присувствует **makefile**, содержит команды:
-```
-make build - сборка проекта, бинарник создается в корне директории
-make run_local - запуск сервиса с локальной конфигурацией (--config=config/local.yaml)
-make run_prod - запуск сервиса с продакшен конфигурацией (--config=config/prod.yaml)
-make gen_proto - генерация файлов пакета из proto файлов (сразу скопирует файлы в pkg/service)
-make clear - отчистка локальных папок
+```bash
+make build  #сборка проекта, бинарник создается в корне директории
+make run_local #запуск сервиса с локальной конфигурацией (--config=config/local.yaml)
+make run_prod #запуск сервиса с продакшен конфигурацией (--config=config/prod.yaml)
+make gen_proto #генерация файлов пакета из proto файлов (сразу скопирует файлы в pkg/service)
+make clear #отчистка локальных папок
 ```
 
 ## Тесты
