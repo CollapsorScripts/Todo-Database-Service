@@ -41,6 +41,8 @@ func (a *App) Run() error {
 		return fmt.Errorf("ошибка при запуске сервера: %w", err)
 	}
 
+	logger.Info("Сервер запушен на порту :%d", a.cfg.GRPC.Port)
+
 	return nil
 }
 
